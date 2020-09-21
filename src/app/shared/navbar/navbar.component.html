@@ -1,7 +1,11 @@
 <div class="container fixed-top colorBody1">
     <nav class="navbar navbar-expand-lg navbar-light colorNavbar2 mt-1">
-       <a class="navbar-brand ml-3">
-       <img src="../../../assets/img/ojo.png" width="40" height="40" loading="lazy">
+       <a *ngIf="!modalService.online && modalService.ojo2" class="navbar-brand ml-3">
+         <img *ngIf="ojo" (click)="onClick1()" src="../../../assets/img/ojo.png" width="40" height="40" loading="lazy">
+         <img *ngIf="!ojo" (click)="onClick2()" src="../../../assets/img/ojo.png" width="40" height="40" loading="lazy">
+       </a>
+       <a *ngIf="modalService.online || !modalService.ojo2" class="navbar-brand ml-3">
+         <img src="../../../assets/img/ojo.png" width="40" height="40" loading="lazy">
        </a>
        <a class="navbar-brand colorName4 ml-3">
        <strong class="text-uppercase federica6">AngularProject</strong>
@@ -12,22 +16,32 @@
        <div class="container text-justify ml-5 mr-5">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav mr-auto">
-                <li class="nav-item" routerLinkActive="active">
+                <li class="nav-item ml-1 mr-1" routerLinkActive="active">
                     <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/inicio']">Portada</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active">
+                <li class="nav-item ml-1 mr-1" routerLinkActive="active">
                     <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/noticias']">Noticias</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active">
+                <li class="nav-item ml-1 mr-1" routerLinkActive="active">
                     <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/noticiaCompleta']">Noticia Completa</a>
                  </li>
-                 <li class="nav-item" routerLinkActive="active">
+                 <li class="nav-item ml-1 mr-1" routerLinkActive="active">
                     <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/mensajes']">Mensajes</a>
                  </li>
-                 <li class="nav-item" routerLinkActive="active">
+                 <li class="nav-item ml-1 mr-1" routerLinkActive="active">
                     <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/ajustes']">Ajustes</a>
                  </li>
              </ul>
+             <div class="text-center mr-5 ml-5">
+               <i *ngIf="login1" (click)="entrar()" class="fas fa-sign-in-alt fa-lg colorNegro16" data-toggle="tooltip" data-placement="left" title="Admin login"></i>
+
+               <div (keyup.enter)="inputLogin()" *ngIf="input1" class="input-group-sm">
+                  <input type="password" id="focusClave" [(ngModel)]="clave" name="clave" placeholder="Press enter" class="form-control backInput15" aria-describedby="inputGroup-sizzing-sm">
+               </div>
+
+               <i (click)="logOut()" *ngIf="modalService.online" class="fas fa-sign-out-alt fa-lg colorName3 cursor7 mr-4"></i>
+               <i *ngIf="modalService.online" class="fas fa-wifi fa-lg colorName3"></i>
+             </div>
              <div class="row">
                 <div class="col text-center">
                     <p class="m-2">
