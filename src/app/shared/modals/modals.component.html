@@ -18,11 +18,11 @@
           </div>
           <hr>
           <button *ngIf="modalService.privacidadSeleccionada" type="button"
-            class="btn btn-outline-warning btn-sm" data-dismiss="modal"> <span class="colorName3">No acepto</span>
+            class="btn btn-outline-warning btn-sm colorName3" data-dismiss="modal">No acepto
           </button>
           <button (click)="contacto()" *ngIf="!modalService.privacidadSeleccionada" type="button"
-            class="btn btn-outline-warning btn-sm"><span class="colorName3">
-              Continuar </span>
+            class="btn btn-outline-warning btn-sm colorName3">
+              Continuar
           </button>
         </div>
       </div>
@@ -89,7 +89,7 @@
             </div>
             <div class="form-group">
               <div class="input-group mb-2">
-                <input autocomplete="off" type="text" class="form-control backInput17"
+                <input type="password" autocomplete="off" type="password" class="form-control backInput17"
                   [(ngModel)]="usuarioLogin.password" name="password" required>
               </div>
             </div>

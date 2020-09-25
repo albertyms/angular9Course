@@ -20,56 +20,26 @@
                     </div>
 
                     <div *ngIf="modalService.mostrar1" class="container colorTexto10">
-                        <p class="font-weight-light text-justify">
-                            <i class="fab fa-angular fa-lg mr-3"></i>
-                            <span class="mr-2">Angular 1:</span>
-                            <small>Cuatro años de experiencia profesional 1.</small>
-                        </p>
-                        <p class="font-weight-light text-justify">
-                            <i class="fab fa-bootstrap fa-lg mr-3"></i>
-                            <span class="mr-2">Bootstrap 1:</span>
-                            <small>Cuatro años de experiencia profesional 1.</small>
-                        </p>
-                        <p class="font-weight-light text-justify">
-                            <i class="fab fa-node-js fa-lg mr-3"></i>
-                            <span class="mr-2">NodeJs 1:</span>
-                            <small>Cuatro años de experiencia profesional 1.</small>
+                        <p *ngFor="let item of tec1" class="font-weight-light text-center">
+                            <i [class]="item['icono']"></i>
+                            <span class="mr-2">{{item['tecnologia']}}:</span>
+                            <small>{{item['experiencia']}}</small>
                         </p>
                     </div>
 
                     <div *ngIf="modalService.mostrar2" class="container colorTexto10">
-                        <p class="font-weight-light text-justify">
-                            <i class="fab fa-angular fa-lg mr-3"></i>
-                            <span class="mr-2">Angular 2:</span>
-                            <small>Cuatro años de experiencia profesional 2.</small>
-                        </p>
-                        <p class="font-weight-light text-justify">
-                            <i class="fab fa-bootstrap fa-lg mr-3"></i>
-                            <span class="mr-2">Bootstrap 2:</span>
-                            <small>Cuatro años de experiencia profesional 2.</small>
-                        </p>
-                        <p class="font-weight-light text-justify">
-                            <i class="fab fa-node-js fa-lg mr-3"></i>
-                            <span class="mr-2">NodeJs 2:</span>
-                            <small>Cuatro años de experiencia profesional 2.</small>
+                        <p *ngFor="let item of tec2" class="font-weight-light text-center">
+                            <i [class]="item['icono']"></i>
+                            <span class="mr-2">{{item['tecnologia']}}:</span>
+                            <small>{{item['experiencia']}}</small>
                         </p>
                     </div>
 
                     <div *ngIf="modalService.mostrar3" class="container colorTexto10">
-                        <p class="font-weight-light text-justify">
-                            <i class="fab fa-angular fa-lg mr-3"></i>
-                            <span class="mr-2">Angular 3:</span>
-                            <small>Cuatro años de experiencia profesional 3.</small>
-                        </p>
-                        <p class="font-weight-light text-justify">
-                            <i class="fab fa-bootstrap fa-lg mr-3"></i>
-                            <span class="mr-2">Bootstrap 3:</span>
-                            <small>Cuatro años de experiencia profesional 3.</small>
-                        </p>
-                        <p class="font-weight-light text-justify">
-                            <i class="fab fa-node-js fa-lg mr-3"></i>
-                            <span class="mr-2">NodeJs 3:</span>
-                            <small>Cuatro años de experiencia profesional 3.</small>
+                        <p *ngFor="let item of tec3" class="font-weight-light text-center">
+                            <i [class]="item['icono']"></i>
+                            <span class="mr-2">{{item['tecnologia']}}:</span>
+                            <small>{{item['experiencia']}}</small>
                         </p>
                     </div>
 
@@ -86,23 +56,24 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content colorModal11">
             <div class="container backModal12">
-                <div class="modal-body text-center colorName3">
-                    <h2><u class="text-capitalize">federica daniela jiménez</u></h2>
+                <div *ngFor="let item of sobreMi" class="modal-body text-center colorName3">
+                    <h2><u class="text-capitalize">{{item.titulo}}</u></h2>
                     <br />
                     <p class="font-weight-light text-justify colorTexto10 tab27">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa repellendus harum non laboriosam eligendi impedit provident quod placeat ipsum nesciunt, debitis sunt modi accusamus earum quasi ea repudiandae et qui
-                        dolorum, accusantium mollitia dicta exercitationem corrupti.
+                        {{item.texto1}}
                     </p>
                     <p class="font-weight-light text-justify mt-2 colorTexto10 tab27">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa repellendus harum non laboriosam eligendi impedit provident quod placeat ipsum nesciunt, debitis sunt modi accusamus earum quasi ea repudiandae et qui
-                        dolorum, accusantium mollitia dicta exercitationem corrupti.
+                        {{item.texto2}}
                     </p>
                     <p class="font-weight-light text-justify mt-2 colorTexto10 tab27">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa repellendus harum non laboriosam eligendi impedit provident quod placeat ipsum nesciunt, debitis sunt modi accusamus earum quasi ea repudiandae et qui
-                        dolorum, accusantium mollitia dicta exercitationem corrupti.
+                        {{item.texto3}}
                     </p>
-                    <p class="font-weight-light text-justify mt-2 colorTexto10 tab27"></p>
-                    <p class="font-weight-light text-justify mt-2 colorTexto10 tab27"></p>
+                    <p class="font-weight-light text-justify mt-2 colorTexto10 tab27">
+                        {{item.texto4}}
+                    </p>
+                    <p class="font-weight-light text-justify mt-2 colorTexto10 tab27">
+                        {{item.texto5}}
+                    </p>
                     <hr />
                     <button (click)="cerrarSobreMi()" type="button" class="btn btn-outline-warning tamanoSalir26 btn-sm">Salir</button>
                 </div>

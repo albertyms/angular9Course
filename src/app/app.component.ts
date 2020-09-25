@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+declare let $: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularProject';
+  
+  constructor() {
+    setTimeout(() => {
+      $('#cookieModal').modal();
+    }, 100);
+  }
+
+  salir() {
+    setTimeout(() => {
+      window.history.back();
+    }, 400);
+  }
+
 }

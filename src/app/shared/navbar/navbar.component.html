@@ -22,14 +22,17 @@
                 <li class="nav-item ml-1 mr-1" routerLinkActive="active">
                     <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/noticias']">Noticias</a>
                 </li>
-                <li class="nav-item ml-1 mr-1" routerLinkActive="active">
-                    <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/noticiaCompleta']">Noticia Completa</a>
+                 <li *ngIf="usuarioService.autenticado" class="nav-item ml-1 mr-1" routerLinkActive="active">
+                    <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/mensajes']">
+                        Mensajes
+                        <span class="ml-2" >({{mensajes.suma}})</span>
+                     </a>
                  </li>
-                 <li class="nav-item ml-1 mr-1" routerLinkActive="active">
-                    <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/mensajes']">Mensajes</a>
-                 </li>
-                 <li class="nav-item ml-1 mr-1" routerLinkActive="active">
-                    <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/ajustes']">Ajustes</a>
+                 <!--  -->
+                 <li *ngIf="usuarioService.autenticado" class="nav-item ml-1 mr-1" routerLinkActive="active">
+                    <a (click)="cerrarNavbar()" class="nav-link colorName3" [routerLink]="['/ajustes']">Ajustes
+                     <i class="fas fa-user-cog ml-2"></i>
+                     </a>
                  </li>
              </ul>
              <div class="text-center mr-5 ml-5">
@@ -40,7 +43,7 @@
                </div>
 
                <i (click)="logOut()" *ngIf="modalService.online" class="fas fa-sign-out-alt fa-lg colorName3 cursor7 mr-4"></i>
-               <i *ngIf="modalService.online" class="fas fa-wifi fa-lg colorName3"></i>
+               <i *ngIf="modalService.online" class="fas fa-wifi fa-lg colorName3 animated pulse infinite"></i>
              </div>
              <div class="row">
                 <div class="col text-center">

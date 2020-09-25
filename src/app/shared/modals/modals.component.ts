@@ -3,6 +3,8 @@ import { ModalService } from 'src/app/services/modal.service';
 import { NgForm } from '@angular/forms';
 
 import Swal from 'sweetalert2'
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { MensajesService } from 'src/app/services/mensajes.service';
 
 declare let $: any;
 
@@ -20,11 +22,14 @@ export class ModalsComponent implements OnInit {
   };
 
   usuarioLogin = {
-    nombre: 'Algo', 
-    password: '123'
+    nombre: '', 
+    password: ''
   };
 
-  constructor(public modalService: ModalService) {
+  constructor(
+    public modalService: ModalService, 
+    public usuarioService: UsuarioService,
+    public mensajeService: MensajesService) {
     this.modalService.privacidadSeleccionada = true;
   }
 
@@ -59,6 +64,7 @@ export class ModalsComponent implements OnInit {
       });
       $('#contacto').modal('hide');
     } else {
+      this.mensajeService.crearMensaje(this.mensaje.email, this.mensaje.mensaje);
       $('#contacto').modal('hide');
       this.limpiarMensaje();
       const Toast = Swal.mixin({
@@ -74,7 +80,6 @@ export class ModalsComponent implements OnInit {
         icon: 'success'
       });
       $('#contacto').modal('hide');
-      console.log(f.value)
     }
   }
 
@@ -92,10 +97,17 @@ export class ModalsComponent implements OnInit {
     $('#loginModal').modal('hide');
   }
 
-  login(forma: NgForm){
-    console.log(forma.value);
-    if(this.usuarioLogin.nombre === 'Algo' && this.usuarioLogin.password === '123') {
+  async login(forma: NgForm){
+
+    if(forma.invalid) {
       this.salirLogin();
+    }
+
+    const usuarioValido = await this.usuarioService.login(this.usuarioLogin.nombre, this.usuarioLogin.password);
+
+    if(usuarioValido) {
+      this.salirLogin();
+      this.usuarioService.autenticado = true;
       setTimeout(() => {
         $('.navbar-collapse').collapse('hide');
       }, 1000);
@@ -131,5 +143,7 @@ export class ModalsComponent implements OnInit {
       this.limpiarUsuario();
     }
   }
+
+
 
 }
