@@ -15,7 +15,7 @@ export class UsuarioService {
 
   autenticado: boolean = false;
 
-  pass: string = '';
+  pass: string = '5f68d129f50cb9716408561a';
 
   constructor(private http: HttpClient, private router: Router) {
     this.getId();

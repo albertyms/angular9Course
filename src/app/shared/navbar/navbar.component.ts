@@ -67,7 +67,9 @@ export class NavbarComponent implements OnInit {
   }
 
   inputLogin() {
-    if (this.clave !== this.usuarioService.pass) {
+/*     console.log(this.clave);
+    console.log(this.usuarioService.pass); */
+    if (this.clave !== '5f68d129f50cb9716408561a') {
       this.login1 = false;
       this.input1 = false;
       this.clave = '';
